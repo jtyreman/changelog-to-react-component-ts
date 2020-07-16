@@ -66,3 +66,7 @@ By prefixing the _type of changes_ section anchor with the release name, we guar
 2. Add `"changelog-to-html": "changelog-to-html"` to your `package.json` `scripts`.
 
 You can get the command help by running `npm run changelog-to-html -- --help`.
+
+# Acknowledgements
+
+This is a modified version of https://github.com/activeviam/changelog-to-html - I wanted a react component not necessarily a stand alone static site.
