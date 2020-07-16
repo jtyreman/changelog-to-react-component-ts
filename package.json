@@ -3,9 +3,6 @@
   "bugs": {
     "url": "https://github.com/TylerAHolden/changelog-to-react-component/issues"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "description": "CLI to convert a CHANGELOG.md following the http://keepachangelog.com convention to a react functional component with permalinks and a GitHub look and feel",
   "dependencies": {
     "fs-extra": "~5.0.0",
