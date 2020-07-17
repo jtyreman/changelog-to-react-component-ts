@@ -43,7 +43,8 @@
     "url": "https://github.com/TylerAHolden/changelog-to-react-component.git"
   },
   "scripts": {
-    "eslint": "eslint . --max-warnings 0"
+    "eslint": "eslint . --max-warnings 0",
+    "release": "standard-version"
   },
   "version": "0.6.1"
 }
