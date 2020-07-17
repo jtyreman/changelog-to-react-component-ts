@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.3](https://github.com/TylerAHolden/changelog-to-react-component/compare/v0.6.2...v0.6.3) (2020-07-17)
+
+
+### Bug Fixes
+
+* Convert html to JSX ([2e4e6ab](https://github.com/TylerAHolden/changelog-to-react-component/commit/2e4e6ab92a15567ba5fbbf78b9a4bc0d32a98889))
+
 ### 0.6.2 (2020-07-17)
 
 
