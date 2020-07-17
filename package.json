@@ -5,6 +5,7 @@
   },
   "description": "CLI to convert a CHANGELOG.md following the http://keepachangelog.com convention to a react functional component with permalinks and a GitHub look and feel",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
     "fs-extra": "~5.0.0",
     "github-markdown-css": "~2.10.0",
     "github-slugid": "~1.0.1",
@@ -44,7 +45,8 @@
   },
   "scripts": {
     "eslint": "eslint . --max-warnings 0",
-    "release": "standard-version"
+    "release": "standard-version",
+    "test": "node src/bin.js --outputDirectoryPath test"
   },
   "version": "0.6.2"
 }

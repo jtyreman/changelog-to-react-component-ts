@@ -9,13 +9,14 @@ const markdownIt = require('markdown-it');
 const gitHubCssFilePath = require.resolve('github-markdown-css');
 const highlightCssFilePath = require.resolve('highlight.js/styles/github.css');
 
-const {markdownItChangelogPlugin} = require('./markdown-it-changelog-plugin');
-const {sanitizeHtmlLikeGitHub} = require('./sanitize-html-like-github');
+const { markdownItChangelogPlugin } = require('./markdown-it-changelog-plugin');
+const { sanitizeHtmlLikeGitHub } = require('./sanitize-html-like-github');
+const convert = require('./html-to-jsx');
 
 const srcDirectoryPath = __dirname;
 const indexHtmlFilename = 'ChangelogMarkdown.jsx';
 
-const createMarkdownRenderer = h1TitleCb => {
+const createMarkdownRenderer = (h1TitleCb) => {
   const markdownRenderer = markdownIt({
     highlight: (code, language) =>
       `<pre class="hljs"><code>${
@@ -26,24 +27,21 @@ const createMarkdownRenderer = h1TitleCb => {
     html: true,
     linkify: true,
     typographer: true,
-  }).use(markdownItChangelogPlugin, {h1TitleCb});
+  }).use(markdownItChangelogPlugin, { h1TitleCb });
   return markdownRenderer;
 };
 
-const convertChangelog = ({
-  markdownChangelogPath,
-  outputDirectoryPath,
-}) =>
+const convertChangelog = ({ markdownChangelogPath, outputDirectoryPath }) =>
   Promise.all([
     fs.readFile(markdownChangelogPath),
     fs.readFile(path.join(srcDirectoryPath, indexHtmlFilename)),
     Promise.all(
-      [gitHubCssFilePath, highlightCssFilePath].map(cssFilePath =>
+      [gitHubCssFilePath, highlightCssFilePath].map((cssFilePath) =>
         fs.readFile(cssFilePath).then(String)
       )
     )
-      .then(cssContents => cssContents.join(`\n\n`))
-      .then(cssContent =>
+      .then((cssContents) => cssContents.join(`\n\n`))
+      .then((cssContent) =>
         fs.outputFile(path.join(outputDirectoryPath, 'style.css'), cssContent)
       ),
   ])
@@ -51,19 +49,23 @@ const convertChangelog = ({
       [markdownBuffer, htmlBuffer].map(String)
     )
     .then(([markdown, htmlTemplate]) => {
-      const replacements = {content: null};
+      const replacements = { content: null };
       replacements.content = sanitizeHtmlLikeGitHub(
-        createMarkdownRenderer(h1Title => {
+        createMarkdownRenderer((h1Title) => {
           replacements.title = h1Title;
         }).render(markdown)
       );
       return Object.keys(replacements).reduce(
-        (html, key) => html.replace(`{/* ${key} */}`, replacements[key]),
+        (html, key) => {
+          const jsxHtml = convert(replacements[key]);
+          return html.replace(`{/* ${key} */}`, jsxHtml);
+        },
+
         htmlTemplate
       );
     })
-    .then(html =>
-      fs.outputFile(path.join(outputDirectoryPath, indexHtmlFilename), html)
-    );
+    .then((html) => {
+      fs.outputFile(path.join(outputDirectoryPath, indexHtmlFilename), html);
+    });
 
-module.exports = {convertChangelog};
+module.exports = { convertChangelog };
