@@ -46,5 +46,5 @@
     "eslint": "eslint . --max-warnings 0",
     "release": "standard-version"
   },
-  "version": "0.6.1"
+  "version": "0.6.2"
 }
