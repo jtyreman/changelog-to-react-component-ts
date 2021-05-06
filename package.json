@@ -11,7 +11,7 @@
     "github-slugid": "~1.0.1",
     "highlight.js": "~9.12.0",
     "markdown-it": "~8.4.0",
-    "sanitize-html": "~1.17.0",
+    "sanitize-html": "~2.3.2",
     "yargs": "~11.0.0"
   },
   "devDependencies": {
