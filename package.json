@@ -10,7 +10,7 @@
     "github-markdown-css": "~2.10.0",
     "github-slugid": "~1.0.1",
     "highlight.js": "~9.12.0",
-    "markdown-it": "~8.4.0",
+    "markdown-it": "~12.3.2",
     "sanitize-html": "~1.17.0",
     "yargs": "~11.0.0"
   },
