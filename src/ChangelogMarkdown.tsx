@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react"
 import './style.css';
 
-export const ChangelogMarkdown = () => {
+function ChangelogMarkdown () {
     return (
         <div className='markdown-body' style={{
             boxSizing: 'border-box',
@@ -14,3 +14,5 @@ export const ChangelogMarkdown = () => {
         </div>
     )
 }
+
+export default ChangelogMarkdown;

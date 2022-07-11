@@ -1,7 +1,5 @@
 'use strict';
-
 const path = require('path');
-
 const fs = require('fs-extra');
 const highlightJs = require('highlight.js');
 const markdownIt = require('markdown-it');
@@ -11,10 +9,10 @@ const highlightCssFilePath = require.resolve('highlight.js/styles/github.css');
 
 const { markdownItChangelogPlugin } = require('./markdown-it-changelog-plugin');
 const { sanitizeHtmlLikeGitHub } = require('./sanitize-html-like-github');
-const convert = require('./html-to-jsx');
+const convert = require('./html-to-tsx');
 
 const srcDirectoryPath = __dirname;
-const indexHtmlFilename = 'ChangelogMarkdown.jsx';
+const indexHtmlFilename = 'ChangelogMarkdown.tsx';
 
 const createMarkdownRenderer = (h1TitleCb) => {
   const markdownRenderer = markdownIt({
@@ -31,7 +29,7 @@ const createMarkdownRenderer = (h1TitleCb) => {
   return markdownRenderer;
 };
 
-const convertChangelog = ({ markdownChangelogPath, outputDirectoryPath }) =>
+const convertChangelog = ({ markdownChangelogPath, outputDirectoryPath, regenerateCss }) =>
   Promise.all([
     fs.readFile(markdownChangelogPath),
     fs.readFile(path.join(srcDirectoryPath, indexHtmlFilename)),
@@ -41,8 +39,11 @@ const convertChangelog = ({ markdownChangelogPath, outputDirectoryPath }) =>
       )
     )
       .then((cssContents) => cssContents.join(`\n\n`))
-      .then((cssContent) =>
-        fs.outputFile(path.join(outputDirectoryPath, 'style.css'), cssContent)
+      .then((cssContent) => {
+              if (regenerateCss === true) {
+                  fs.outputFile(path.join(outputDirectoryPath, 'style.css'), cssContent)
+              }
+          }
       ),
   ])
     .then(([markdownBuffer, htmlBuffer]) =>

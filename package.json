@@ -1,21 +1,22 @@
 {
   "bin": "src/bin.js",
   "bugs": {
-    "url": "https://github.com/TylerAHolden/changelog-to-react-component/issues"
+    "url": "https://github.com/jtyreman/changelog-to-react-component-ts/issues"
   },
-  "description": "CLI to convert a CHANGELOG.md following the http://keepachangelog.com convention to a react functional component with permalinks and a GitHub look and feel",
+  "description": "CLI to convert a CHANGELOG.md following the http://keepachangelog.com convention to a react typescript functional component with permalinks and a GitHub look and feel",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
-    "fs-extra": "~5.0.0",
-    "github-markdown-css": "~2.10.0",
-    "github-slugid": "~1.0.1",
-    "highlight.js": "~9.12.0",
-    "markdown-it": "~8.4.0",
-    "sanitize-html": "~1.17.0",
-    "yargs": "~11.0.0"
+    "cheerio": "^1.0.0-rc.12",
+    "fs-extra": "^10.1.0",
+    "github-markdown-css": "^5.1.0",
+    "github-slugid": "^1.0.1",
+    "highlight.js": "^11.5.1",
+    "markdown-it": "^13.0.1",
+    "sanitize-html": "^2.7.0",
+    "yargs": "^17.5.1"
   },
   "devDependencies": {
     "eslint": "^4.16.0",
+    "react": "^18.2.0",
     "eslint-config-prettier": "~2.9.0",
     "eslint-plugin-node": "~5.2.1",
     "standard-version": "^8.0.2"
@@ -34,19 +35,20 @@
     "github",
     "permalink",
     "react",
-    "anchor"
+    "anchor",
+    "typescript"
   ],
   "license": "MIT",
   "main": "src",
-  "name": "changelog-to-react-component",
+  "name": "changelog-to-react-component-ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TylerAHolden/changelog-to-react-component.git"
+    "url": "https://github.com/jtyreman/changelog-to-react-component-ts.git"
   },
   "scripts": {
     "eslint": "eslint . --max-warnings 0",
     "release": "standard-version",
-    "test": "node src/bin.js --outputDirectoryPath test"
+    "test": "node src/bin.js --help"
   },
-  "version": "0.6.3"
+  "version": "0.0.2"
 }

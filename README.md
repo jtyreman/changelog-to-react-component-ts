@@ -62,11 +62,17 @@ By prefixing the _type of changes_ section anchor with the release name, we guar
 
 # Usage
 
-1. Add this package to your dependencies: `npm install --save-dev changelog-to-html`
-2. Add `"changelog-to-html": "changelog-to-html"` to your `package.json` `scripts`.
+1. Add this package to your dependencies: `npm install --save-dev changelog-to-react-component-ts`.
+2. Add `"changelog-to-react-component-ts": "changelog-to-react-component-ts"` to your `package.json` `scripts`.
+3. Run `yarn changelog-to-react-component-ts`.
+####
+4. Flags 
+ - --regenerateCss  set to false if you have a custom css style.
+ - --outputDirectoryPath default set to src/components/Changelog 
+ - --markdownChangelogPath default path of CHANGELOG.md file default is CHANGELOG.md
 
-You can get the command help by running `npm run changelog-to-html -- --help`.
+You can get the command help by running `yarn run changelog-to-html -- --help`.
 
 # Acknowledgements
 
-This is a modified version of https://github.com/activeviam/changelog-to-html - I wanted a react component not necessarily a stand alone static site.
+This is a modified version of https://github.com/TylerAHolden/changelog-to-react-component - I wanted a Typescript react component

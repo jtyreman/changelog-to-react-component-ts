@@ -316,7 +316,7 @@ StyleParser.prototype = {
       return value;
     } 
       // Proably a string, wrap it in quotes
-      return `'${  value.replace(/'/g, '"')  }'`;
+      return `'${value.replace(/'/g, '"')  }'`;
     
   }
 };
